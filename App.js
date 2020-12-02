@@ -11,7 +11,7 @@ import {
   StyleSheet,
   View,
   Text,
-    TouchableHighlight
+    TouchableHighlight,
 } from 'react-native';
 
 const App: () => React$Node = () => {
@@ -33,8 +33,26 @@ const App: () => React$Node = () => {
           <TouchableHighlight style={[ buttonStyles.core, buttonStyles.primary, buttonStyles.hairlineBorder, buttonStyles.spacer ]}>
               <Text>Primary Hairline</Text>
           </TouchableHighlight>
+          <Button style={buttonStyles.spacer}
+                  onPress={() => {}}>
+              <Text>Custom button with props</Text>
+          </Button>
       </View>
   );
+};
+
+const Button = ({ style, children, ...otherProps }) => (
+    <TouchableHighlight style={[buttonStyles.core, buttonStyles.hairlineBorder, style]}
+                        {...otherProps}
+                        underlayColor='#EFEFEF'
+                        activeOpacity={0.8}>
+        {children}
+    </TouchableHighlight>
+);
+
+Button.propTypes = {
+    // style: TouchableHighlight.propTypes.style,
+    // children: React.PropTypes.node
 };
 
 const viewStyles = {
