@@ -8,29 +8,22 @@
 
 import React from 'react';
 import {
-  SafeAreaView,
   StyleSheet,
-  ScrollView,
   View,
   Text,
-  StatusBar,
 } from 'react-native';
-
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
 
 const App: () => React$Node = () => {
   return (
-      <View style={{ backgroundColor: 'blue', flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text style={{ color: '#FFF', fontSize: 22 }}>Hello World</Text>
+      <View style={viewStyles}>
+        <Text style={textStyles}>Hello World</Text>
       </View>
   );
 };
+
+const viewStyles = { backgroundColor: 'blue', flex: 1, justifyContent: 'center', alignItems: 'center' };
+
+const textStyles = { color: '#FFF', fontSize: 22 }
 
 const styles = StyleSheet.create({
 });
