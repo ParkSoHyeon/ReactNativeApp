@@ -15,10 +15,20 @@ import {
 } from 'react-native';
 
 const App: () => React$Node = () => {
-  return (
+    console.log(StyleSheet.hairlineWidth);
+    return (
       <View style={viewStyles}>
-          <TouchableHighlight style={[btn, btnPrimary]}>
-              <Text>Submit</Text>
+          <TouchableHighlight style={[ buttonStyles.core, buttonStyles.spacer ]}>
+              <Text>Default Normal</Text>
+          </TouchableHighlight>
+          <TouchableHighlight style={[ buttonStyles.core, buttonStyles.hairlineBorder, buttonStyles.spacer ]}>
+              <Text>Default Hairline</Text>
+          </TouchableHighlight>
+          <TouchableHighlight style={[ buttonStyles.core, buttonStyles.primary, buttonStyles.spacer ]}>
+              <Text>Primary Normal</Text>
+          </TouchableHighlight>
+          <TouchableHighlight style={[ buttonStyles.core, buttonStyles.primary, buttonStyles.hairlineBorder, buttonStyles.spacer ]}>
+              <Text>Primary Hairline</Text>
           </TouchableHighlight>
       </View>
   );
@@ -30,20 +40,28 @@ const viewStyles = {
     alignItems: 'center'
 };
 
-const btn = {
-    borderStyle: 'solid',
-    borderColor: '#D5D5D5',
-    borderWidth: 1,
-    backgroundColor: '#EEE',
-    borderRadius: 3,
-    padding: 3,
-    paddingLeft: 5,
-    paddingRight: 5
-};
 
-const btnPrimary = {
-    backgroundColor: '#60B044',
-    borderColor: '#5CA941'
-}
+const buttonStyles = StyleSheet.create({
+    core: {
+        borderStyle: 'solid',
+        borderColor: '#D5D5D5',
+        borderWidth: 1,
+        backgroundColor: '#EEE',
+        borderRadius: 3,
+        padding: 3,
+        paddingLeft: 5,
+        paddingRight: 5
+    },
+    primary: {
+        backgroundColor: '#60B044',
+        borderColor: '#355F27'
+    },
+    hairlineBorder: {
+        borderWidth: StyleSheet.hairlineWidth
+    },
+    spacer: {
+        marginBottom: 10
+    }
+});
 
 export default App;
