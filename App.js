@@ -11,21 +11,39 @@ import {
   StyleSheet,
   View,
   Text,
+    TouchableHighlight
 } from 'react-native';
 
 const App: () => React$Node = () => {
   return (
       <View style={viewStyles}>
-        <Text style={textStyles}>Hello World</Text>
+          <TouchableHighlight style={[btn, btnPrimary]}>
+              <Text>Submit</Text>
+          </TouchableHighlight>
       </View>
   );
 };
 
-const viewStyles = { backgroundColor: 'blue', flex: 1, justifyContent: 'center', alignItems: 'center' };
+const viewStyles = {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+};
 
-const textStyles = { color: '#FFF', fontSize: 22 }
+const btn = {
+    borderStyle: 'solid',
+    borderColor: '#D5D5D5',
+    borderWidth: 1,
+    backgroundColor: '#EEE',
+    borderRadius: 3,
+    padding: 3,
+    paddingLeft: 5,
+    paddingRight: 5
+};
 
-const styles = StyleSheet.create({
-});
+const btnPrimary = {
+    backgroundColor: '#60B044',
+    borderColor: '#5CA941'
+}
 
 export default App;
