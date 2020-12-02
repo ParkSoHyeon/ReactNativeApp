@@ -21,7 +21,10 @@ const App: () => React$Node = () => {
           <TouchableHighlight style={[ buttonStyles.core, buttonStyles.spacer ]}>
               <Text>Default Normal</Text>
           </TouchableHighlight>
-          <TouchableHighlight style={[ buttonStyles.core, buttonStyles.hairlineBorder, buttonStyles.spacer ]}>
+          <TouchableHighlight style={[ buttonStyles.core, buttonStyles.hairlineBorder, buttonStyles.spacer ]}
+                              underlayColor='#EFEFEF'
+                              activeOpacity={0.8}
+                              onPress={() => {}}>
               <Text>Default Hairline</Text>
           </TouchableHighlight>
           <TouchableHighlight style={[ buttonStyles.core, buttonStyles.primary, buttonStyles.spacer ]}>
