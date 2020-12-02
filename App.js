@@ -15,73 +15,32 @@ import {
 } from 'react-native';
 
 const App: () => React$Node = () => {
-    console.log(StyleSheet.hairlineWidth);
     return (
-      <View style={viewStyles}>
-          <TouchableHighlight style={[ buttonStyles.core, buttonStyles.spacer ]}>
-              <Text>Default Normal</Text>
-          </TouchableHighlight>
-          <TouchableHighlight style={[ buttonStyles.core, buttonStyles.hairlineBorder, buttonStyles.spacer ]}
-                              underlayColor='#EFEFEF'
-                              activeOpacity={0.8}
-                              onPress={() => {}}>
-              <Text>Default Hairline</Text>
-          </TouchableHighlight>
-          <TouchableHighlight style={[ buttonStyles.core, buttonStyles.primary, buttonStyles.spacer ]}>
-              <Text>Primary Normal</Text>
-          </TouchableHighlight>
-          <TouchableHighlight style={[ buttonStyles.core, buttonStyles.primary, buttonStyles.hairlineBorder, buttonStyles.spacer ]}>
-              <Text>Primary Hairline</Text>
-          </TouchableHighlight>
-          <Button style={buttonStyles.spacer}
-                  onPress={() => {}}>
-              <Text>Custom button with props</Text>
-          </Button>
+      <View style={styles.main}>
+          <Text style={styles.content}>Column 1</Text>
+          <Text style={styles.content}>Column 2</Text>
+          <Text style={styles.content}>Column 3</Text>
       </View>
   );
 };
 
-const Button = ({ style, children, ...otherProps }) => (
-    <TouchableHighlight style={[buttonStyles.core, buttonStyles.hairlineBorder, style]}
-                        {...otherProps}
-                        underlayColor='#EFEFEF'
-                        activeOpacity={0.8}>
-        {children}
-    </TouchableHighlight>
-);
-
-Button.propTypes = {
-    // style: TouchableHighlight.propTypes.style,
-    // children: React.PropTypes.node
-};
-
-const viewStyles = {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-};
-
-
-const buttonStyles = StyleSheet.create({
-    core: {
-        borderStyle: 'solid',
-        borderColor: '#D5D5D5',
+const styles = StyleSheet.create({
+   main: {
+       flex: 1,
+       paddingVertical: 20,
+       flexDirection: 'row',
+       flexWrap: 'wrap'
+   },
+    content: {
+       padding: 20,
+        margin: 0,
+        marginHorizontal: 10,
+        backgroundColor: '#EF4C',
+        width: 125,
+        height: 125,
         borderWidth: 1,
-        backgroundColor: '#EEE',
-        borderRadius: 3,
-        padding: 3,
-        paddingLeft: 5,
-        paddingRight: 5
-    },
-    primary: {
-        backgroundColor: '#60B044',
-        borderColor: '#355F27'
-    },
-    hairlineBorder: {
-        borderWidth: StyleSheet.hairlineWidth
-    },
-    spacer: {
-        marginBottom: 10
+        borderColor: 'red',
+        textAlign: 'center'
     }
 });
 
