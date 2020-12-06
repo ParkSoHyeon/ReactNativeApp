@@ -7,6 +7,7 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   StyleSheet,
   View,
@@ -17,46 +18,55 @@ import {
 const App: () => React$Node = () => {
     return (
         <View>
-            <Text style={styles.text}>
-                Fun styling <Text style={styles.bold}>text</Text> inside of
-                <Text style={styles.italic}>React Native.</Text>
-            </Text>
-            <Text style={[styles.text, styles.moreLineHeight, styles.right]}>
-                I am right aligned and have more <Text style={styles.code}>lineHeight</Text> than the text above.
-            </Text>
-            <Text style={[styles.text, styles.center, styles.thin]}>
-                I am centered and very thin!
-            </Text>
+            <Headline>This is a header</Headline>
+            <BodyCopy>This is my regular or
+                <Bold onPress={() => console.log('Pressed!')}
+                      numberOfLines={2}
+                      style={pressStyles.green}>bold</Bold> text.</BodyCopy>
         </View>
   );
 };
 
-const styles = StyleSheet.create({
+const Bold = ({ children, style, ...otherProps }) =>
+    <Text style={[boldTextStyles.text, style]} {...otherProps}>{children}</Text>;
+Bold.propTypes = {
+    children: PropTypes.node.isRequired,
+    style: Text.propTypes.style
+};
+const boldTextStyles = StyleSheet.create({
     text: {
-        fontSize: 22,
-        marginBottom: 20
+        fontWeight: '600'
     },
-    bold: {
-        fontWeight: 'bold'
+});
+
+const BodyCopy = ({ children }) => <Text style={BodyCopyStyles.text}>{children}</Text>;
+BodyCopy.propTypes = {
+    children: PropTypes.node.isRequired
+};
+const BodyCopyStyles = StyleSheet.create({
+    text: {
+        fontFamily: 'Helvetica',
+        fontSize: 18,
+        color: '#333'
     },
-    thin: {
-        fontWeight: '200'
-    },
-    italic: {
-        fontStyle: 'italic'
-    },
-    moreLineHeight: {
-        lineHeight: 40
-    },
-    right: {
-        textAlign: 'right'
-    },
-    center: {
-        textAlign: 'center'
-    },
-    code: {
-        fontFamily: 'Courier'
+});
+
+const pressStyles = StyleSheet.create({
+    green: {
+        color: 'green'
     }
+})
+
+const Headline = ({ children }) => <Bold><Text style={HeadlineStyles.text}>{children}</Text></Bold>;
+Headline.propTypes = {
+    children: PropTypes.node.isRequired
+};
+const HeadlineStyles = StyleSheet.create({
+    text: {
+        fontFamily: 'Optima',
+        fontSize: 30,
+        color: '#333'
+    },
 });
 
 export default App;
