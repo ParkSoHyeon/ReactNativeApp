@@ -16,31 +16,36 @@ import {
 
 const App: () => React$Node = () => {
     return (
-      <View style={styles.main}>
-          <Text style={styles.content}>Column 1</Text>
-          <Text style={styles.content}>Column 2</Text>
-          <Text style={styles.content}>Column 3</Text>
+      <View style={styles.container}>
+          <View style={styles.item}/>
+          <View style={styles.item}/>
+          <View style={styles.item}/>
       </View>
   );
 };
 
+/*
+* justifyContent 속성 값
+*   flex-start
+*   flex-end
+*   center
+*   space-between
+*   space-around
+* */
+
 const styles = StyleSheet.create({
-   main: {
+   container: {
        flex: 1,
-       paddingVertical: 20,
-       flexDirection: 'row',
-       flexWrap: 'wrap'
+       flexDirection: 'column',
+       justifyContent: 'flex-start',
+       alignItems: 'flex-start'
    },
-    content: {
-       padding: 20,
-        margin: 0,
-        marginHorizontal: 10,
-        backgroundColor: '#EF4C',
-        width: 125,
-        height: 125,
+    item: {
+        backgroundColor: 'lightgoldenrodyellow',
+        width: 150,
+        height: 150,
         borderWidth: 1,
-        borderColor: 'red',
-        textAlign: 'center'
+        borderColor: 'goldenrod',
     }
 });
 
