@@ -17,9 +17,9 @@ import {
 const App: () => React$Node = () => {
     return (
       <View style={styles.container}>
-          <View style={styles.item}/>
-          <View style={styles.item}/>
-          <View style={styles.item}/>
+          <View style={[styles.item, { alignSelf: 'flex-start' }]}/>
+          <View style={[styles.item, { alignSelf: 'stretch', width: undefined }]}/>
+          <View style={[styles.item, { alignSelf: 'flex-end' }]}/>
       </View>
   );
 };
@@ -33,11 +33,19 @@ const App: () => React$Node = () => {
 *   space-around
 * */
 
+/*
+* alignSelf 속성 값
+*   flex-start
+*   flex-end
+*   center
+*   stretch
+* */
+
 const styles = StyleSheet.create({
    container: {
        flex: 1,
        flexDirection: 'column',
-       justifyContent: 'flex-start',
+       justifyContent: 'space-around',
        alignItems: 'flex-start'
    },
     item: {
