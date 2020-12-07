@@ -6,20 +6,51 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import {
-    Dimensions,
-    View
+    StyleSheet,
+    View,
+    Text
 } from 'react-native';
 
-const App: () => React$Node = () => {
-    const { width, height, scale } = Dimensions.get('window');
-    console.log(`width: ${ width }, height: ${ height }, scale: ${ scale }`)
-    return (
-        <View>
+class DemoOnLayout extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            width: 0,
+            height: 0
+        }
 
-        </View>
-    );
-};
+        this.onLayoutChange = this.onLayoutChange.bind(this);
+    };
 
-export default App;
+    onLayoutChange(event) {
+        const { width, height } = event.nativeEvent.layout;
+        this.setState({ width, height });
+    }
+
+    render(): React$Node {
+        return (
+            <View onLayout={this.onLayoutChange}
+                  style={styles.container}>
+                <Text style={styles.text}>
+                    Width: { this.state.width },
+                    Height: { this.state.height }
+                </Text>
+            </View>
+        );
+    }
+}
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    text: {
+        fontSize: 18
+    }
+})
+
+export default DemoOnLayout;
